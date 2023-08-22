@@ -7,9 +7,10 @@ import {
 import { useDispatch } from "react-redux"
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify"
 import useAxios from "./use.Axios"
+import { useState } from "react"
 
 const useBlogCall = () => {
- 
+  const [toogle, setToogle] = useState(true)
   const dispatch = useDispatch()
   const { axiosWithToken } = useAxios()
 
@@ -65,8 +66,12 @@ const useBlogCall = () => {
     dispatch(fetchStart())
     try {
       await axiosWithToken.post(`/api/${url}/${id}/`)
-      toastSuccessNotify(`${url} Like Alındı :)`)
-      getBlogData(url)
+      // setToogle(!true)
+      // {
+      //   toogle ? (toastSuccessNotify(`${url} Like Alındı :)`)) : (   toastErrorNotify(`${url} Like Hata Oldu!`))
+      // }
+      
+      getBlogData("blogs")
     } catch (error) {
       dispatch(fetchFail())
       toastErrorNotify(`${url} Like Hata Oldu!`)

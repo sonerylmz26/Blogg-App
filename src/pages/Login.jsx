@@ -11,7 +11,7 @@ import { Formik } from "formik";
 import useAuthCalls from "../hooks/useAuthCalls";
 
 const Login = () => {
-  const { login } = useAuthCalls();
+const { login } = useAuthCalls();
 
   return (
     <Container maxWidth="lg">

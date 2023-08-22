@@ -7,11 +7,13 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import BlogBadgeFav, { BlogBadgeComment, BlogBadgeVisit } from '../components/BlogBadgeFav';
 import { bagdeBox, btnReadMore } from '../style/globalStyle';
+import { useState } from 'react';
 
 
 
 
 const Dashboard = () => {
+
   const { getBlogData, postBlogLikeData} = useBlogCall()
   const {blogs} = useSelector((state)=> state.blog)
   console.log(blogs)
@@ -34,8 +36,9 @@ const Dashboard = () => {
 {
   blogs.map((blog, index)=> {
 
-    const{id,image, title, publish_date, content, author, likes} = blog
-    const tarih = publish_date
+    const{id,image, title, publish_date, content, author, likes, comment_count, post_views, likes_n 
+    } = blog
+    const tarih = new Date(Date.UTC(publish_date)) 
     
     console.log("tarih" , tarih)
 return (
@@ -81,9 +84,10 @@ return (
 <Box sx={bagdeBox}>
 
 <Box >
-<BlogBadgeFav id={id} likes={likes} />
-<BlogBadgeComment />
-<BlogBadgeVisit  />
+<BlogBadgeFav likes_n={likes_n}  id={id} likes={likes} />
+<BlogBadgeComment comment_count={comment_count} />
+<BlogBadgeVisit post_views={post_views}
+  />
 </Box>
 
 <Button sx={btnReadMore}>
