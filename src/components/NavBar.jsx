@@ -114,8 +114,8 @@ const NavBar = () => {
                 <MenuItem key={index} onClick={handleCloseNavMenu}>
                   <Button
                     onClick={() => navigate(item.url)}
-                    sx={{ color: "black", p:0 }}
-                    textAlign="center"
+                    sx={{ color: "black", p:0 ,textAlign:"center" }}
+            
                   >
                     {item.title}
                   </Button>
@@ -150,8 +150,8 @@ const NavBar = () => {
                   handleCloseNavMenu();
                   navigate(item.url);
                 }}
-                sx={{ my: 2, color: "white", display: "block" }}
-                textAlign="center"
+                sx={{ my: 2, color: "white", display: "block", textAlign:"center" }}
+               
               >
                 {item.title}
               </Button>

@@ -1,5 +1,12 @@
+import HomeCard from "../components/blog/HomeCard";
+
 const MyBlog = () => {
-  return <div>MyBlog</div>;
-};
+
+  return(
+  <div>
+
+{/* <HomeCard  /> */}
+  </div>
+)};
 
 export default MyBlog;

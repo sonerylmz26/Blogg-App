@@ -1,4 +1,3 @@
-import * as React from "react";
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
@@ -6,6 +5,9 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import CommentIcon from '@mui/icons-material/Comment';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import useBlogCall from "../hooks/useBlogCall";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 
 
 
@@ -20,13 +22,18 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 export default function BlogBadgeFav({likes,id,likes_n }) {
 const {  postBlogLikeData} = useBlogCall()
-const like = likes_n.map((item, i) => item.post_id )
-
+// const like = likes_n.some((item, i) => item.user_id == )
+const { currentUser } = useSelector((state) => state.auth)
+const navigate = useNavigate()
 
 
   return (
 
-    <IconButton  onClick={()=>postBlogLikeData("likes", id) } aria-label="cart">
+    <IconButton  onClick={()=> {
+      currentUser ?   postBlogLikeData("likes", id) : navigate("/login")
+    }
+    
+   } aria-label="cart">
       <StyledBadge badgeContent={likes} color="secondary">
         <FavoriteIcon />
       </StyledBadge>
@@ -36,9 +43,10 @@ const like = likes_n.map((item, i) => item.post_id )
 
 
 
-export  function BlogBadgeComment({comment_count}) {
+export  function BlogBadgeComment({comment_count, open, setOpen}) {
+ 
   return (
-    <IconButton sx={{ml:"10px"}} aria-label="cart">
+    <IconButton onClick={()=>setOpen(!open)} sx={{ml:"10px"}} aria-label="cart">
       <StyledBadge badgeContent={comment_count} color="secondary">
         <CommentIcon />
       </StyledBadge>

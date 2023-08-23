@@ -21,6 +21,7 @@ const authSlice = createSlice({
       state.currentUser = payload?.user?.username;
       state.isAdmin = payload?.user?.is_superuser;
       state.token = payload?.key;
+      state.data = payload?.user;
     },
 
     logoutSuccess: (state) => {

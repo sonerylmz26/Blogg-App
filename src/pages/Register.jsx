@@ -5,18 +5,19 @@ import LockIcon from "@mui/icons-material/Lock";
 import image from "../assets/result.svg";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import { Link, useNavigate } from "react-router-dom";
-
-import TextField from "@mui/material/TextField";
 import { Formik } from "formik";
 import RegisterForm, { registerSchema } from "../components/auth/RegisterForm";
 import useAuthCalls from "../hooks/useAuthCalls";
+import {Helmet} from "react-helmet";
 
 const Register = () => {
   const { register } = useAuthCalls();
   return (
     <Container maxWidth="lg">
+      <Helmet>
+        <title>Blog-Register</title>
+      </Helmet>
       <Grid
         container
         justifyContent="center"
@@ -70,6 +71,7 @@ const Register = () => {
             }}
             component={(props) => <RegisterForm {...props} />}
           ></Formik>
+          
           <Box sx={{ textAlign: "center", mt: 2 }}>
             <Link to="/login">Do you have an account?</Link>
           </Box>

@@ -9,12 +9,15 @@ import Box from "@mui/material/Box";
 import LoginForm, { loginSchema } from "../components/auth/LoginForm";
 import { Formik } from "formik";
 import useAuthCalls from "../hooks/useAuthCalls";
-
+import {Helmet} from "react-helmet";
 const Login = () => {
 const { login } = useAuthCalls();
 
   return (
     <Container maxWidth="lg">
+      <Helmet>
+        <title>Blog-Login</title>
+      </Helmet>
       <Grid
         container
         justifyContent="center"
@@ -55,7 +58,7 @@ const { login } = useAuthCalls();
             validationSchema={loginSchema}
             onSubmit={(values, action) => {
             
-              login(values);
+             login(values);
               action.resetForm();
               action.setSubmitting(false);
             }}

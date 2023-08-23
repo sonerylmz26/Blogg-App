@@ -5,11 +5,17 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import { useSelector } from 'react-redux';
+import {Helmet} from "react-helmet";
+
 
 const About = () => {
   const {data} = useSelector((state) => state.auth)
   return (
     <div>
+      <Helmet>
+        <title>Blog-About</title>
+      </Helmet>
+      
 <Box
       sx={{
         display: 'flex',

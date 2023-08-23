@@ -6,7 +6,7 @@ const PrivateRouter = () => {
 
 
 
-  return currentUser ? <Outlet /> : <Navigate to="/" />
+  return currentUser ? <Outlet /> : <Navigate to="/login" />
 }
 
 export default PrivateRouter

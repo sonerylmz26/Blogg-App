@@ -2,6 +2,7 @@ import { Box, CardMedia, Typography } from "@mui/material"
 import { useSelector } from "react-redux"
 import { profilTypograf, profileBox } from "../style/globalStyle"
 import LazyLoad from 'react-lazy-load';
+import {Helmet} from "react-helmet";
 
 const Profile = () => {
 const { data } = useSelector((state) => state.auth)
@@ -9,6 +10,9 @@ const { data } = useSelector((state) => state.auth)
   return (
       
     <div>
+      <Helmet>
+        <title>Blog-Profile</title>
+      </Helmet>
       <Box 
 width={{xs:"300px", md:"500px"}}
 sx={profileBox}
