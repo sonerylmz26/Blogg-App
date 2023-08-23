@@ -3,7 +3,8 @@ import {
   fetchStart,
   getBlogSuccess,
   getBlogDetail,
-  getCatagorySuccess
+  getCatagorySuccess,
+  postNewBlogSuccess
  
 } from "../features/blogSlice"
 import { useDispatch, useSelector } from "react-redux"
@@ -17,9 +18,7 @@ const useBlogCall = () => {
   const {blogs, details} = useSelector((state)=> state.blog)
 
 const {data} = useSelector((state)=> state.auth)
-
-// const likeDat = blogs.likes_n.filter((item)=> item.user_id == data.id )
-// console.log(likeDat)
+//!getBlogData
   const getBlogData = async (url) => {
     dispatch(fetchStart())
     try {
@@ -30,7 +29,7 @@ const {data} = useSelector((state)=> state.auth)
       console.log(error)
     }
   }
-
+//! getCatagoryData
   const getCatagoryData = async (url) => {
     dispatch(fetchStart())
     try {
@@ -42,9 +41,7 @@ const {data} = useSelector((state)=> state.auth)
     }
   }
 
-
-
-
+// ! getBlogDetailsData
   const getBlogDetailsData = async (url, id) => {
     dispatch(fetchStart())
     try {
@@ -56,19 +53,14 @@ const {data} = useSelector((state)=> state.auth)
     }
   }
 
+//! postBlogLikeData
 
   const postBlogLikeData = async (url, id) => {
-  
     dispatch(fetchStart())
   
-
     try {
       await axiosWithToken.post(`/api/${url}/${id}/`)
-      // setToogle(!true)
-      // {
-      //   toogle ? (toastSuccessNotify(`${url} Like Alındı :)`)) : (   toastErrorNotify(`${url} Like Hata Oldu!`))
-      // }
-      getBlogDetailsData("blogs", id)
+  getBlogDetailsData("blogs", id)
       getBlogData("blogs")
     } catch (error) {
       dispatch(fetchFail())
@@ -76,7 +68,7 @@ const {data} = useSelector((state)=> state.auth)
       console.log(error)
     }
   }
-
+//! commentPost
   const commentPost = async (url, detailsId, values) => {
 
     dispatch(fetchStart())
@@ -93,6 +85,26 @@ const {data} = useSelector((state)=> state.auth)
       console.log(error)
     }
   }
+
+//! newBlogPost
+const createNewBlog = async (url, values) => {
+
+  dispatch(fetchStart())
+
+  try {
+  const {data } =   await axiosWithToken.post(`/api/${url}/`, values)
+dispatch(postNewBlogSuccess(data))
+    toastSuccessNotify(`${url} Başarılı! `)
+    getBlogData("blogs")
+    
+
+  } catch (error) {
+    dispatch(fetchFail())
+    toastErrorNotify(`${url} Hata Oldu!`)
+    console.log(error)
+  }
+}
+
 
 
   const deleteBlogData = async (url, id) => {
@@ -147,7 +159,8 @@ const {data} = useSelector((state)=> state.auth)
     postBlogLikeData,
     getBlogDetailsData ,
     commentPost,
-    getCatagoryData
+    getCatagoryData,
+    createNewBlog
   
   }
 }

@@ -6,30 +6,45 @@ import {
   MenuItem,
   Select,
   TextField,
+  Typography,
 } from "@mui/material";
 import { Form, Formik } from "formik";
+import { useEffect } from "react";
 import useBlogCall from "../hooks/useBlogCall";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import { object, string } from "yup";
+import { useNavigate } from "react-router-dom";
 
+const blogSchema = object({
+  title: string().required("Bu alan zorunludur"),
+  image: string().required("Bu alan zorunludur"),
+  content: string().required("Bu alan zorunludur"),
+  category: string().required("Bu alan zorunludur"),
+  status: string().required("Bu alan zorunludur"),
+});
 
-
+const status = [
+  {
+    id: "d",
+    name: "Draft",
+  },
+  {
+    id: "p",
+    name: "Published",
+  },
+];
 const NewBlog = () => {
-const {categories} = useSelector((state)=> state.blog)
-const { getCatagoryData} = useBlogCall()
-console.log(categories)
+  const { categories, newBlog } = useSelector((state) => state.blog);
+  console.log(newBlog)
+  const {  getCatagoryData , createNewBlog } = useBlogCall();
+const navigate = useNavigate()
 
 
-useEffect(() => {
-  
-  getCatagoryData("categories")
- 
-}, [])
-
-
-
+  useEffect(() => {
+    getCatagoryData("categories");
+  }, []);
   return (
-    <Box sx={{width:500, m:"auto", mt:10}}>
+    <Box sx={{ width: 500, m: "auto", mt: 10 }}>
       <Formik
         initialValues={{
           title: "",
@@ -38,18 +53,23 @@ useEffect(() => {
           category: "",
           status: "",
         }}
-        //validationSchema={blogSchema}
+        validationSchema={blogSchema}
         onSubmit={(values, action) => {
-          console.log(values)
+console.log(values)
+createNewBlog("blogs" , values);
+navigate("/")
           action.resetForm();
           action.setSubmitting(false);
         }}
       >
         {({ values, handleChange, errors, touched, handleBlur }) => (
           <Form>
+            <Typography variant="h4" align="center" mb={5} color="orange">
+              NEW BLOG
+            </Typography>
             <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
               <TextField
-                label="Title"
+                label="Title *"
                 name="title"
                 id="title"
                 type="text"
@@ -61,7 +81,7 @@ useEffect(() => {
                 helperText={errors.title}
               />
               <TextField
-                label="Image URL"
+                label="Image URL *"
                 name="image"
                 id="image"
                 type="url"
@@ -72,45 +92,66 @@ useEffect(() => {
                 error={touched.image && Boolean(errors.image)}
                 helperText={errors.image}
               />
-
-              <FormControl sx={{ width:"100%" }}>
-
-                <InputLabel id="catagory"
-            >
-                  Catogory *
+              <FormControl>
+                <InputLabel id="demo-simple-select-helper-label">
+                  Category *
                 </InputLabel>
                 <Select
-               
-                  id="catagory"
-                  value={values. category}
+                  label="Category *"
+                  id="category"
+                  name="category"
+                  variant="outlined"
+                  value={values.category}
                   onChange={handleChange}
-                  autoWidth
-                  label="Catogories *"
+                  error={touched.category && Boolean(errors.category)}
+                  helperText={errors.category}
                 >
-                  {
-                    categories?.map(({ id, name})=>{
-
-return(
-  <div key={id}>
-    <MenuItem
-    
-    >{name}</MenuItem>            
-  </div>
-)
-
-                    } )
-                  }
-
-               
+                  {categories.map(({ id, name }) => (
+                    <MenuItem value={id} key={id}>
+                      {name}
+                    </MenuItem>
+                  ))}
                 </Select>
               </FormControl>
+              <FormControl>
+                <InputLabel id="demo-simple-select-helper-label">
+                  Status*
+                </InputLabel>
+                <Select
+                  label="Status"
+                  id="status"
+                  name="status"
+                  variant="outlined"
+                  value={values.status}
+                  onChange={handleChange}
+                  error={touched.status && Boolean(errors.status)}
+                  helperText={errors.status}
+                >
+                  {status.map(({ id, name }) => (
+                    <MenuItem value={id} key={id}>
+                      {name}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+              <TextField
+                label="Content *"
+                name="content"
+                id="content"
+                variant="outlined"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.content}
+                error={touched.content && Boolean(errors.content)}
+                helperText={errors.content}
+              />
               <Button
                 variant="contained"
                 type="submit"
                 sx={{ backgroundColor: "orange" }}
-                //onClick={() => commentPost("comments", detailsId)}
+          
               >
-                ADD COMMENT
+               NEW BLOG
               </Button>
             </Box>
           </Form>
