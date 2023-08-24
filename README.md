@@ -90,7 +90,7 @@ I created a Milestone Blog App using ReactJS.
 
 ## Demo
 
-[Milestone Blog App]()
+[Milestone Blog App](https://blogg-app-hsfn-nrijofx35-sonerylmz26.vercel.app/)
 
 ## Expected Outcome
 
