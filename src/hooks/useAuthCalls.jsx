@@ -57,7 +57,7 @@ const useAuthCalls = () => {
         userData
       );
       dispatch(registerSuccess(data));
-      toastSuccessNotify("kayit islemi basarili");
+      toastSuccess("kayit islemi basarili");
       navigate("/login");
     } catch (error) {
       console.log(error);

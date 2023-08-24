@@ -9,13 +9,16 @@ const { data } = useSelector((state) => state.auth)
 
   return (
       
-    <Box height={{xs:"79.2vh", md:"70.4vh", lg:"79.1vh" }}>
+    <Box height={{xs:"79.2vh", md:"70.4vh", lg:"79.1vh" }}
+
+    >
+      
       <Helmet>
         <title>Blog-Profile</title>
       </Helmet>
       <Box 
       
-width={{xs:"300px", md:"500px"}}
+
 sx={profileBox}
 >
   <LazyLoad >
@@ -31,6 +34,7 @@ sx={profileBox}
       
          
          <Typography
+         align="center"
          variant="h5"
          component="h2"
          sx={ profilTypograf}
@@ -45,6 +49,7 @@ sx={profileBox}
           {data.email}
          </Typography>
          <Typography
+          align="center"
          variant="h5"
          component="h2"
          sx={ profilTypograf}

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import useBlogCall from "../hooks/useBlogCall";
 import { Helmet } from "react-helmet";
-import { Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { useSelector } from "react-redux";
 import MyBlogCard from "../components/blog/MyBlogCard";
 const MyBlog = () => {
@@ -13,7 +13,7 @@ const MyBlog = () => {
     getBlogData("blogs");
   }, []);
   return (
-    <div>
+    <Box minHeight={{xs:"79.2vh", md:"70.4vh", lg:"79.1vh" }} >
       <Helmet>
         <title>My Blogs</title>
       </Helmet>
@@ -34,7 +34,7 @@ const MyBlog = () => {
             );
           })}
       </Grid>
-    </div>
+    </Box>
   );
 };
 export default MyBlog;

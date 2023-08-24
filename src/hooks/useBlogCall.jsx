@@ -8,7 +8,7 @@ import {
  
 } from "../features/blogSlice"
 import { useDispatch, useSelector } from "react-redux"
-import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify"
+import { toastErrorNotify, toastSuccessNotify,  toastSuccess } from "../helper/ToastNotify"
 import useAxios from "./use.Axios"
 import { useState } from "react"
 
@@ -60,7 +60,7 @@ const {data} = useSelector((state)=> state.auth)
   
     try {
       await axiosWithToken.post(`/api/${url}/${id}/`)
-  getBlogDetailsData("blogs", id)
+      getBlogDetailsData("blogs", id)
       getBlogData("blogs")
     } catch (error) {
       dispatch(fetchFail())

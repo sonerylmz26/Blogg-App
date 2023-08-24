@@ -14,7 +14,7 @@ const {blogs} = useSelector((state)=> state.blog)
     }, []);
 
     return (
-        <Box >
+        <Box minHeight={{xs:"79.2vh", md:"70.4vh", lg:"79.1vh" }} >
             <Helmet>
                 <title>Blogs-Home</title>
             </Helmet>
