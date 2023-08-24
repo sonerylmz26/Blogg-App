@@ -18,6 +18,7 @@ const MyBlogCard = ({ item }) => {
     post_views,
     likes_n,
   } = item;
+  console.log(item)
   const navigate = useNavigate()
 const {getBlogDetailsData} = useBlogCall()
 
@@ -25,6 +26,10 @@ const {getBlogDetailsData} = useBlogCall()
   const tarih = new Date(publish_date);
   return (
     <div>
+{
+  
+}
+
       <Card
         sx={{
           //width: "400px",

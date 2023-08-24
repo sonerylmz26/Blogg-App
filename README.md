@@ -94,4 +94,4 @@ I created a Milestone Blog App using ReactJS.
 
 ## Expected Outcome
 
-![Blog App](Blog-App.gif)
+![Blog App](Blop-App.gif)
