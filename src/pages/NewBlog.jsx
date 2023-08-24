@@ -14,6 +14,7 @@ import useBlogCall from "../hooks/useBlogCall";
 import { useSelector } from "react-redux";
 import { object, string } from "yup";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const blogSchema = object({
   title: string().required("Bu alan zorunludur"),
@@ -44,7 +45,15 @@ const navigate = useNavigate()
     getCatagoryData("categories");
   }, []);
   return (
-    <Box sx={{ width: 500, m: "auto", mt: 10 }}>
+
+    <Box sx={{ m: "auto", mt: 10   }}
+    height={{xs:"75vh", md:"70.4vh" }}
+    width={{xs:350 , md:500}}
+
+    >
+        <Helmet>
+        <title>New Blogs</title>
+      </Helmet>
       <Formik
         initialValues={{
           title: "",

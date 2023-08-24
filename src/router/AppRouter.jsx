@@ -12,6 +12,9 @@ import { Details } from "@mui/icons-material";
 import Detail from "../pages/Detail";
 import NewBlog from "../pages/NewBlog";
 import { useState } from "react";
+import MyBlogDetail from "../components/blog/MyBlogDetail";
+import Footer from "../components/Footer";
+import { Box } from "@mui/material";
 
 const AppRouter = () => {
   
@@ -20,6 +23,9 @@ const AppRouter = () => {
         <Router>
             <NavBar />
             <Routes>
+             
+
+               
                 <Route path="/" element={<Dashboard  />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
@@ -30,8 +36,12 @@ const AppRouter = () => {
                 <Route path="" element={<PrivateRouter />}>
                     <Route path="/detail/:id" element={<Detail />} />
                     <Route path="/new-blog" element={<NewBlog />} />
+                    <Route path="/myblogdetail" element={<MyBlogDetail />} />
                 </Route>
+             
             </Routes>
+
+            <Footer/> 
         </Router>
     );
 };

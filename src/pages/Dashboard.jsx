@@ -2,19 +2,19 @@ import { useEffect } from "react";
 import useBlogCall from "../hooks/useBlogCall";
 import { Helmet } from "react-helmet";
 import HomeCard from "../components/blog/HomeCard";
-import { Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { useSelector } from "react-redux";
 
 const Dashboard = () => {
 const { getBlogData } = useBlogCall();
-const {blogs, details} = useSelector((state)=> state.blog)
-console.log(blogs)
+const {blogs} = useSelector((state)=> state.blog)
+
     useEffect(() => {
         getBlogData("blogs");
     }, []);
 
     return (
-        <div>
+        <Box >
             <Helmet>
                 <title>Blogs-Home</title>
             </Helmet>
@@ -37,7 +37,8 @@ return(
 
  </Grid>
 
-        </div>
+
+        </Box>
     );
 };
 

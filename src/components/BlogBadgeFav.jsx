@@ -22,10 +22,11 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 export default function BlogBadgeFav({likes,id,likes_n }) {
 const {  postBlogLikeData} = useBlogCall()
-// const like = likes_n.some((item, i) => item.user_id == )
-const { currentUser } = useSelector((state) => state.auth)
+
+const { currentUser , data} = useSelector((state) => state.auth)
 const navigate = useNavigate()
 
+const like = likes_n.some((item) => item.user_id === data.id)
 
   return (
 
@@ -35,7 +36,7 @@ const navigate = useNavigate()
     
    } aria-label="cart">
       <StyledBadge badgeContent={likes} color="secondary">
-        <FavoriteIcon />
+        <FavoriteIcon sx={like ? { color: "red" } : { color: "" }} />
       </StyledBadge>
     </IconButton>
   );

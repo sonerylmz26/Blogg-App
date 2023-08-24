@@ -138,10 +138,10 @@ dispatch(postNewBlogSuccess(data))
 
 
 
-  const putBlogData = async (url, info) => {
+  const putBlogData = async (url,id , values) => {
     dispatch(fetchStart())
     try {
-      await axiosWithToken.put(`/api/${url}/${info.id}/`, info)
+      await axiosWithToken.put(`/api/${url}/${id}/`, values)
       toastSuccessNotify(`${url} succesfuly updated`)
       getBlogData(url)
     } catch (error) {

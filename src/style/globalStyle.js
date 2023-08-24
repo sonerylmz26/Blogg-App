@@ -15,7 +15,7 @@ export const profilTypograf = {
 export const profileBox = {
       display:"flex", flexDirection:"column", justifyContent:"center", alignItems: "center",
       m:"auto",
-      backgroundColor:{xs:"red", md:"white" ,lg:"green"},
+    p:25,
       height:{xs:"500px", md:"550px"},
       boxShadow:
             "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",

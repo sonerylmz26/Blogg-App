@@ -9,11 +9,12 @@ const { data } = useSelector((state) => state.auth)
 
   return (
       
-    <div>
+    <Box height={{xs:"79.2vh", md:"70.4vh", lg:"79.1vh" }}>
       <Helmet>
         <title>Blog-Profile</title>
       </Helmet>
       <Box 
+      
 width={{xs:"300px", md:"500px"}}
 sx={profileBox}
 >
@@ -51,7 +52,7 @@ sx={profileBox}
           {data.bio}
          </Typography>
       </Box>
-    </div>
+    </Box>
   )
 }
 

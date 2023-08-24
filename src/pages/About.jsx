@@ -11,7 +11,8 @@ import {Helmet} from "react-helmet";
 const About = () => {
   const {data} = useSelector((state) => state.auth)
   return (
-    <div>
+    <Box height={{xs:"79.2vh", md:"70.4vh", lg:"79.1vh" }}
+   >
       <Helmet>
         <title>Blog-About</title>
       </Helmet>
@@ -74,7 +75,7 @@ const About = () => {
       
     
     </Box>
-    </div>
+    </Box>
   )
 }
 

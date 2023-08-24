@@ -12,7 +12,7 @@ const HomeCard= ({blog}) => {
   } = blog
 
 const tarih = new Date(publish_date)
-
+const { data } = useSelector((state) => state.auth);
 const navigate = useNavigate()
 const {getBlogDetailsData} = useBlogCall()
 
@@ -21,7 +21,9 @@ const {getBlogDetailsData} = useBlogCall()
   return (
     <div>
 
-  <Card  sx={{height:"400px", display:"flex", flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
+  <Card  sx={{height:"400px", display:"flex",       boxShadow:
+            "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
+            borderRadius:"10px",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
 
   <CardMedia
       component="img"
@@ -70,7 +72,12 @@ const {getBlogDetailsData} = useBlogCall()
 <Button onClick={()=>{
 
 getBlogDetailsData("blogs", id)
-navigate(`/detail/${id}`)
+
+{
+  author === data.username
+    ? navigate("/myblogdetail")
+    : navigate(`/detail/${id}`);
+}
 
 } 
 

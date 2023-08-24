@@ -16,12 +16,6 @@ const {getBlogDetailsData} = useBlogCall()
  console.log(details)
 
 
-// useEffect(() => {
-
-//   getBlogDetailsData("blogs", id)
-
-// }, [])
-
 const tarih = new Date(details.publish_date)
 
   return (

@@ -10,11 +10,12 @@ import LoginForm, { loginSchema } from "../components/auth/LoginForm";
 import { Formik } from "formik";
 import useAuthCalls from "../hooks/useAuthCalls";
 import {Helmet} from "react-helmet";
+import { useSelector } from "react-redux";
 const Login = () => {
 const { login } = useAuthCalls();
 
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" >
       <Helmet>
         <title>Blog-Login</title>
       </Helmet>
@@ -25,24 +26,26 @@ const { login } = useAuthCalls();
         sx={{
           height: "100vh",
           p: 2,
+          
         }}
       >
-        <Grid item xs={12} mb={3}>
+        <Grid item xs={12} mt={10} >
           <Typography variant="h3" color="primary" align="center">
             BLOG APP
           </Typography>
         </Grid>
 
-        <Grid item xs={12} sm={10} md={6}>
+        <Grid item xs={12} sm={10} md={6} mb={30}>
           <Avatar
             sx={{
-              backgroundColor: "secondary.light",
+              backgroundColor: "#008000",
               m: "auto",
               width: 40,
               height: 40,
+              
             }}
           >
-            <LockIcon size="30" />
+           
           </Avatar>
           <Typography
             variant="h4"
@@ -66,18 +69,24 @@ const { login } = useAuthCalls();
           ></Formik>
 
           <Box sx={{ textAlign: "center", mt: 2 }}>
-            <Link to="/register">Do you have not an account?</Link>
+            <Typography >
+            Do you have not an account?
+            </Typography>
+            <Link to="/register">Sign Up</Link>
           </Box>
         </Grid>
 
-        <Grid item xs={10} sm={7} md={6}>
-          <Container>
-            <img src={image} alt="img" />
-          </Container>
-        </Grid>
+        
       </Grid>
     </Container>
   );
 };
 
 export default Login;
+
+
+{/* <Grid item xs={10} sm={7} md={6}>
+          <Container>
+            <img src={image} alt="img" />
+          </Container>
+        </Grid> */}
