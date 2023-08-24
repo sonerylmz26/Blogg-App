@@ -70,9 +70,7 @@ SOLUTION
 
 ```
 
-## Expected Outcome
 
-![Blog App](Blog-App.gif)
 
 ## Objective
 
@@ -93,3 +91,7 @@ I created a Milestone Blog App using ReactJS.
 ## Demo
 
 [Milestone Blog App]()
+
+## Expected Outcome
+
+![Blog App](Blog-App.gif)
