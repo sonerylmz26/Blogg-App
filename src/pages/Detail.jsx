@@ -1,18 +1,15 @@
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Box, CardMedia, Typography } from '@mui/material'
-import { useEffect } from 'react';
 import { useSelector } from 'react-redux'
-import useBlogCall from '../hooks/useBlogCall';
 import BlogBadgeFav, { BlogBadgeComment, BlogBadgeVisit } from '../components/BlogBadgeFav';
-import { bagdeBox } from '../style/globalStyle';
 import { useState } from 'react';
 import CommentCard from '../components/blog/CommentCard';
 
 const Detail = () => {
   const [open , setOpen ] = useState(false)
   console.log(open)
-const {getBlogDetailsData} = useBlogCall()
-  const {blogs, details} = useSelector((state)=> state.blog)
+
+  const { details} = useSelector((state)=> state.blog)
  console.log(details)
 
 

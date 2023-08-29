@@ -180,6 +180,7 @@ const NavBar = () => {
               onClose={handleCloseUserMenu}
             >
               {currentUser ? (
+                
                 <MenuItem
                 
                   sx={{ display: "flex", flexDirection: "column",

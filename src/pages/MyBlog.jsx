@@ -4,7 +4,6 @@ import { Helmet } from "react-helmet";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import MyBlogCard from "../components/blog/MyBlogCard";
-import { btnReadMore } from "../style/globalStyle";
 import { useNavigate } from "react-router-dom";
 const MyBlog = () => {
   const { getBlogData } = useBlogCall();
